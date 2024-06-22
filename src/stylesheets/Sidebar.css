@@ -1,0 +1,45 @@
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #037ca1;
+    padding-top: 60px;
+}
+
+.sidebar .group-list {
+    list-style: none;
+    padding: 50px;
+}
+
+.sidebar .group-list-item, .link {
+    margin-bottom: 125px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sidebar .group-list-item:hover, .link:hover {
+    color: aqua;
+    transition: .5s;
+}
+
+.home-icon, .about-icon, .services-icon, .date-icon, .contact-icon {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+}
+
+.sidebar .line-sidebar {
+    color: white; 
+}
+
+.sidebar .logo img {
+    margin-top: -45px;
+    margin-left: 95px;
+    width: 50px;
+    border-radius: 50%;
+    rotate: -20deg;
+}

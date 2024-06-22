@@ -1,0 +1,30 @@
+.daypick-container {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 10px;
+    width: 340px;
+    margin-top: 135px;
+    margin-left: 860px;
+    margin-right: 200px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-container .enabled-btn {
+    background-color: #099bd9;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.btn-container .enabled-btn:hover {
+    background-color: #0678a8;
+    transition: .3s;
+}

@@ -1,0 +1,83 @@
+.contact-container {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    border-radius: 5px;
+    box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.4);
+    max-width: 1250px;
+    height: 661px;
+    margin-top: 45px;
+    margin-left: 470px;
+    text-align: center;
+}
+
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.map-container {
+    flex: 1;
+    margin-top: 15px;
+}
+
+.map {
+    margin-top: 20px;
+    margin-left: 60px;
+    width: 500px;
+    height: 500px;
+    border: 1px solid #0898cd;
+    border-radius: 5px;
+}
+
+.title-contact {
+    padding-top: 20px;
+    color: #0898cd;
+}
+
+.form-container {
+    flex: 1;
+    margin-top: 30px;
+    margin-left: 120px;
+}
+
+.file {
+    margin-bottom: 15px;
+}
+
+.mid {
+    display: flex;
+    justify-content: space-between;
+}
+
+input,
+textarea {
+    padding: 20px;
+    border-radius: 15px;
+    border: none;
+    border: 1px solid #0898cd;
+}
+
+.mid input {
+    width: 48%;
+}
+
+.input-full {
+    width: 100%;
+}
+
+.btn-send {
+    display: block;
+    margin: auto;
+    width: 150px;
+    cursor: pointer;
+    transition: .5s;
+    padding: 15px 15px;
+    font-size: 17px;
+    background-color: #0f99cb;
+    color: #fff;
+}
+
+.btn-send:hover {
+    background-color: #056c91;
+}

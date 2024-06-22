@@ -1,0 +1,11 @@
+* {
+    font-family: Roboto, sans-serif;
+}
+
+body {
+    background-image: url(assets/dentista.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}

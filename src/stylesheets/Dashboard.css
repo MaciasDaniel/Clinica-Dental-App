@@ -1,0 +1,39 @@
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    margin: 50px;
+    margin-left: 300px;
+    margin-top: 70px;
+}
+
+.table-container th, td {
+    padding: 10px;
+    border: 1px solid #0898cd;
+    text-align: center;
+}
+
+.selector {
+    background-color: #0898cd;
+    color: #fff;
+    border-radius: 5px;
+    height: 30px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.input-container {
+    max-width: 435px;
+    margin-bottom: 10px;
+}
+
+.input-text {
+    width: 445px;
+    height: 30px;
+    border-radius: 5px;
+}

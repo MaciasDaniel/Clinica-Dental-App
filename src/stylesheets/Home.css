@@ -1,0 +1,38 @@
+.home-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.text-container {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    padding: 50px;
+    border-radius: 10px;
+    margin-top: 200px;
+    margin-left: 600px;
+    margin-right: 200px;
+    text-align: center;
+    box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+.text {
+    font-size: 24px;
+    color: #0589ad;
+}
+
+.btn-read-container {
+    padding-top: 15px;
+}
+
+.btn-read-more {
+    background-color: #099bd9;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.btn-read-more:hover {
+    background-color: #0678a8;
+    transition: .3s;
+}

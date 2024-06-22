@@ -1,0 +1,33 @@
+.pagination-container {
+    padding: 5px;
+    margin-top: 12px;
+}
+
+.pagination-container button {
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+.pages {
+    margin: 10px;
+}
+
+.enabled {
+    background-color: #0898cd;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.enabled:hover {
+    background-color: #127093;
+}
+
+.disabled {
+    pointer-events: none;
+    background-color: #127093;
+}
