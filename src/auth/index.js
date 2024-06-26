@@ -13,11 +13,3 @@ export const doLogout = (next) => {
     localStorage.removeItem("data");
     next();
 };
-
-export const getCurrentUserDetail = () => {
-    if (isLoggedIn()) {
-        return JSON.parse(localStorage.getItem("data"));
-    } else {
-        return undefined;
-    }
-};

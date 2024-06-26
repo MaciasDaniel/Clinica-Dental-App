@@ -33,7 +33,7 @@ const AddUser = () => {
                 <h2 className='text-title'>Regístrate</h2>
                 <form onSubmit={(e) => onSubmit(e)}>
                     <div className='container-field'>
-                        <label htmlFor='Name' className='form-label'>
+                        <label htmlFor='name' className='form-label'>
                             Nombre:
                         </label>
                         <input

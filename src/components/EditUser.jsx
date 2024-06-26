@@ -13,9 +13,10 @@ const EditUser = () => {
     lastName: "",
     username: "",
     email: "",
+    role: "",
   });
 
-  const { name, lastName, username, email } = user;
+  const { name, lastName, username, email, role } = user;
 
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -27,12 +28,12 @@ const EditUser = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:8080/api/v1/${id}`, user);
+    await axios.put(`http://localhost:8080/api/v1/update/user/${id}`, user);
     navigate("/");
   };
 
   const loadUser = async () => {
-    const result = await axios.get(`http://localhost:8080/api/v1/${id}`);
+    const result = await axios.get(`http://localhost:8080/api/v1/user/${id}`);
     setUser(result.data);
   };
 
@@ -42,13 +43,13 @@ const EditUser = () => {
         <h2 className="text-title">Editar Usuario</h2>
         <form onSubmit={(e) => onSubmit(e)}>
           <div className="container-field">
-            <label htmlFor="Name" className="form-label">
+            <label htmlFor="name" className="form-label">
               Nombre:
             </label>
             <input
               type="text"
               className="form-control"
-              placeholder="Introduce tu nombre"
+              placeholder="Introduce tu nombre*"
               name="name"
               value={name}
               onChange={(e) => onInputChange(e)}
@@ -62,7 +63,7 @@ const EditUser = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Introduce tu apellido"
+              placeholder="Introduce tu apellido*"
               name="lastName"
               value={lastName}
               onChange={(e) => onInputChange(e)}
@@ -76,7 +77,7 @@ const EditUser = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Introduce un nombre de usuario"
+              placeholder="Introduce un nombre de usuario*"
               name="username"
               value={username}
               onChange={(e) => onInputChange(e)}
@@ -90,12 +91,27 @@ const EditUser = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Introduce tu correo electrónico"
+              placeholder="Introduce tu correo electrónico*"
               name="email"
               value={email}
               onChange={(e) => onInputChange(e)}
               required
             />
+          </div>
+          <div className="container-field">
+            <label htmlFor="role" className="form-label">
+              Rol:
+            </label>
+            <select
+              className="form-select"
+              name="role"
+              value={role}
+              onChange={(e) => onInputChange(e)}
+            >
+              <option value="ADMIN">Administrador</option>
+              <option value="DENTIST">Dentista</option>
+              <option value="USER">Usuario</option>
+            </select>
           </div>
           <button type="submit" className="btn btn-outline-primary my-3">
             Guardar

@@ -18,16 +18,15 @@ export default function ViewUser() {
   }, []);
 
   const loadUser = async () => {
-    const result = await axios.get(`http://localhost:8080/api/v1/${id}`);
+    const result = await axios.get(`http://localhost:8080/api/v1/user/${id}`);
     setUser(result.data);
   };
 
   return (
     <div className="view-container">
-      <h2 className="text-center m-4">Detalles de usuario</h2>
+      <h2 className="text-center m-4">Detalles del usuario #{user.id}</h2>
       <div className="card">
         <div className="card-header">
-          Detalles del usuario con id: {user.id}
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
               <b>Nombre: </b>
@@ -45,6 +44,10 @@ export default function ViewUser() {
               <b>Correo electrónico: </b>
               {user.email}
             </li>
+            <li className="list-group-item">
+              <b>Rol: </b>
+              {user.role}
+            </li>
           </ul>
         </div>
       </div>
@@ -53,4 +56,4 @@ export default function ViewUser() {
       </Link>
     </div>
   );
-}
+};
