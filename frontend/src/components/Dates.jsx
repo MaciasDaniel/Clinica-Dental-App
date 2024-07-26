@@ -1,56 +1,46 @@
-import { React, useState } from "react";
-import { useParams } from "react-router-dom";
-import { format } from "date-fns";
-import { DayPicker } from "react-day-picker";
-import "react-day-picker/dist/style.css";
-import "../stylesheets/Dates.css";
+import { useState } from "react";
 import { isLoggedIn } from "../auth";
+import '../stylesheets/Dates.css';
 import axios from "axios";
 
 const Dates = () => {
-  const [selected, setSelected] = useState();
-  const { id } = useParams();
-  const [date, setDate] = useState(
-    {
-      fecha: format(selected, "yyyy-MM-dd:00:00:00")
-    }
-  );
-
   const isLogged = isLoggedIn();
+  const [date, setDate] = useState("");
 
-  const onSubmit = async (e) => {
+  const userData = JSON.parse(localStorage.getItem("data"));
+  const userId = userData.id;
+
+  const onInputChange = (e) => {
+    setDate(e.target.value);
+  };
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    setDate({ ...date, fecha: format(selected, "yyyy-MM-dd:00:00:00") });
-
-    try {
-      const response = await axios.post(`http://localhost:8080/dates/save/${id}`, date);
-      console.log(response.data);
-    } catch (error) {
-      console.error("Error al agendar la cita:", error.message);
-    }
-  }
-
-  let footer = <p>Agenda tu cita.</p>;
-  if (selected) {
-    footer = <p>Tu cita: {format(selected, "PP")}.</p>;
-  }
+    console.log("Fecha y hora enviadas:", date);
+    await axios.post(`http://localhost:8080/dates/user/${userId}`, { date });
+    setDate("");
+  };
 
   return (
-    <div className="daypick-container">
-      <form onSubmit={(e) => onSubmit(e)}>
-        <DayPicker
-          mode="single"
-          selected={selected}
-          onSelect={setSelected}
-          footer={footer}
+    <div className="date-container">
+      <form className="date-form">
+        <label htmlFor="fechaHora">Ingresa la fecha y hora:</label>
+        <input
+          type="datetime-local"
+          id="date"
           value={date}
+          onChange={(e) => onInputChange(e)}
+          required
         />
-        <div className="btn-container">
-          {
-            isLogged &&
-            <button className="enabled-btn">Agendar cita</button>
-          }
+        <br />
+        <div className="enabled-btn">
+          {isLogged ? (
+            <button className="enabled-btn" onClick={handleSubmit}>
+              Agendar cita
+            </button>
+          ) : (
+            <p>Registrate e inicia sesión para agendar una cita</p>
+          )}
         </div>
       </form>
     </div>

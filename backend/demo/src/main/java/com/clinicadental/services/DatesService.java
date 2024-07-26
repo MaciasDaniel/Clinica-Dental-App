@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,15 +27,28 @@ public class DatesService {
     @Autowired
     private UserRepository userRepository;
 
-    public void saveUserDate(Dates date, Long userId) {
-        Optional<User> user = userRepository.findById(userId);
-        if (user.isPresent()) {
-            datesRepository.save(date);
-        }
+    public void saveUserDate(Long userId, Dates date) {
+        User user = userRepository.findById(userId)
+                                    .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        
+        Dates newDate = new Dates();
+        newDate.setDate(date.getDate());
+        newDate.setDescription(date.getDescription());
+        newDate.setDentist(date.getDentist());
+        newDate.setUser(user);
+        datesRepository.save(newDate);
     }
 
     public List<Dates> getAllDatesByUser(Long userId) {
-        return datesRepository.findDatesByUserId(userId);
+        if (userId == null) {
+            throw new IllegalArgumentException("El id del usuario no puede ser nulo");
+        }
+        
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isPresent()) {
+            return datesRepository.findDatesByUserId(userId);
+        }
+        return Collections.emptyList();
     }
 
     public Optional<Dates> getDateById(Long id) {
@@ -43,10 +58,4 @@ public class DatesService {
     public void deleteDateById(Long id) {
         datesRepository.deleteById(id);
     }
-
-    /*public Optional<Dates> findByDentist(String dentist) {
-        return datesRepository.findByDentist(dentist);
-    }
-    Esto va en DentistService en un futuro
-    */
 }

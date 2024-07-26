@@ -32,12 +32,12 @@
     margin-top: 15px;
     border-radius: 5px;
     color: #0898cd;
+    transition: .3s;
 }
 
 .dashboard-user .logout-btn:hover {
     background-color: #0898cd;
     color: #fff;
-    transition: .3s;
 }
 
 .login-container {

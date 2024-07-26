@@ -6,11 +6,15 @@ import Pagination from "../components/Pagination";
 
 const Dashboard = () => {
   const [users, setUsers] = useState([]);
+  const [user, setUser] = useState();
   const [currentPage, setCurrentPage] = useState(0);
   const [dataQt] = useState(8);
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("id");
-  const [userRole, setUserRole] = useState(0); //Hacer un metodo para obtener el id dinamicamente del usuario logueado y obtener el role.
+  const [userRole, setUserRole] = useState();
+  const [dates, setDates] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const loadUsers = async (currentPage) => {
     try {
@@ -30,6 +34,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     loadUsers(currentPage);
+    hasRole();
   }, [currentPage]);
 
   const nPages = Math.ceil(users.length / dataQt);
@@ -51,16 +56,32 @@ const Dashboard = () => {
     }
   });
 
-  const hasRole = async (id) => {
-    const response = await axios.get(`http://localhost:8080/api/v1/user/${id}`);
-    const userData = response.data;
-    const role = userData.role;
+  useEffect(() => {
+    const currentUser = async () => {
+      try {
+        const userResponse = await axios.get("/api/vi/user/current");
+        setUser(userResponse.data);
+
+        const citasResponse = await axios.get(`/dates/${userResponse.data.id}`);
+        setDates(citasResponse.data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    currentUser();
+  }, []);
+
+  const hasRole = async () => {
+    const response = await axios.get("/api/v1/user/current");
+    const role = response.data.role;
     setUserRole(role);
   };
 
-  useEffect(() => {
-    hasRole(1);
-  }, []);
+  if (loading) return <p>Cargando...</p>;
+  if (error) return <p>Error al cargar la información: {error.message}</p>;
 
   return (
     <>
@@ -141,13 +162,38 @@ const Dashboard = () => {
       {userRole === "DENTIST" && (
         <div className="dashboard-container">
           <h1>Dashboard de Dentista</h1>
-      </div>
+        </div>
       )}
 
       {userRole === "USER" && (
         <div className="dashboard-container">
-          <h1>Dashboard de Usuario</h1>
-      </div>
+          <div style={{ padding: "20px" }}>
+            {user && <h2>Bienvenido, {user.name}</h2>}
+            <table className="table-container">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Descripción</th>
+                  <th>Dentista</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {dates.map((date) => (
+                  <tr key={date.id}>
+                    <td>{date.date}</td>
+                    <td>{date.descripcion}</td>
+                    <td>{date.dentista}</td>
+                    <td>
+                      <button>Editar Cita</button>
+                      <button>Eliminar Cita</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       )}
     </>
   );

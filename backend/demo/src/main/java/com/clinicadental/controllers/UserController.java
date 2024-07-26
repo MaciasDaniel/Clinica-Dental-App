@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Optional;
 
 @RestController
@@ -32,6 +33,12 @@ public class UserController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    @GetMapping("/user/current")
+    public ResponseEntity<User> getCurrentUser(Principal principal) {
+        User user = userService.getByUserName(principal.getName());
+        return ResponseEntity.ok(user);
+    }
+
     @PreAuthorize("permitAll")
     @GetMapping("/user/{id}")
     public ResponseEntity<Optional<User>> getById(@PathVariable("id") Long id) {
@@ -46,7 +53,7 @@ public class UserController {
         return new ResponseEntity<>(userSaved, HttpStatus.CREATED);
     }
 
-    @PreAuthorize("hasRole('ADMIN)")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update/user/{id}")
     public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @Valid @RequestBody User user) {
         User userUpdated = userService.getUserById(id).orElseThrow(() -> new RuntimeException("El usuario con id: "+ id +" no existe."));

@@ -1,6 +1,5 @@
 package com.clinicadental.entities;
 
-import com.clinicadental.enums.Permission;
 import com.clinicadental.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -11,14 +10,16 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Data
+@Getter
+@Setter
+@ToString(exclude = {"date"})
+@EqualsAndHashCode(exclude = {"date"})
 @Entity
 @Table(name = "usuarios")
 public class User implements UserDetails {
@@ -51,7 +52,7 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Dates> date;
 
     @Override

@@ -1,30 +1,65 @@
-.daypick-container {
-    background-color: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(15px);
-    box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.6);
-    padding: 10px;
-    border-radius: 10px;
-    width: 340px;
-    margin-top: 135px;
-    margin-left: 860px;
-    margin-right: 200px;
+.date-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  border-radius: 5px;
+  box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.4);
+  max-width: 1250px;
+  height: 661px;
+  margin-top: 45px;
+  margin-left: 470px;
+  text-align: center;
 }
 
-.btn-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.date-form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
 }
 
-.btn-container .enabled-btn {
-    background-color: #099bd9;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    padding: 8px;
+.date-form label {
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.btn-container .enabled-btn:hover {
-    background-color: #0678a8;
-    transition: .3s;
+.date-form input[type="datetime-local"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.date-form button {
+  background-color: #0898cd;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: .3s;
+  font-size: 18px;
+  padding: 9px;
+  margin-top: 15px;
+}
+
+.date-form button:hover {
+  background-color: #096f94;
+}
+
+.enabled-btn {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.enabled-btn p {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 10px;
 }

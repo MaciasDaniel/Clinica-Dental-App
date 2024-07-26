@@ -2,12 +2,15 @@ package com.clinicadental.controllers;
 
 import com.clinicadental.entities.Dates;
 import com.clinicadental.services.DatesService;
+
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -22,13 +25,15 @@ public class DatesController {
         this.datesService = datesService;
     }
 
-    @PostMapping("/save/{userId}")
-    public ResponseEntity<Dates> save(@PathVariable("userId") Long userId, @Valid @RequestBody Dates date) {
-        datesService.saveUserDate(date, userId);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    @PreAuthorize("permitAll")
+    @PostMapping("/user/{id}")
+    public ResponseEntity<String> createDate(@PathVariable("id") Long userId, @Valid @RequestBody Dates date) {
+        datesService.saveUserDate(userId, date);
+        return new ResponseEntity<>("Cita agendada.", HttpStatus.CREATED);
     }
 
-    @GetMapping("/user/{userId}")
+    @PreAuthorize("permitAll")
+    @GetMapping("/{userId}")
     public ResponseEntity<List<Dates>> getAllDatesByUser(@PathVariable("userId") Long userId) {
         List<Dates> dates = datesService.getAllDatesByUser(userId);
         if (dates.isEmpty()) {
@@ -37,31 +42,22 @@ public class DatesController {
         return new ResponseEntity<>(dates, HttpStatus.OK);
     }
 
+    @PreAuthorize("permitAll")
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateDateByUser(@PathVariable("id") Long id, @RequestBody Dates date) {
-        Dates dateUpdated = datesService.getDateById(id).orElseThrow(() -> new RuntimeException(("No se encontró la cita.")));
+    public ResponseEntity<String> updateDateByUser(@PathVariable("id") Long userId, @Valid @RequestBody Dates date) {
+        Dates dateUpdated = datesService.getDateById(userId).orElseThrow();
         dateUpdated.setDate(date.getDate());
         dateUpdated.setDescription(date.getDescription());
         dateUpdated.setDentist(date.getDentist());
-        dateUpdated.setUserId(date.getUserId());
         dateUpdated.setUser(date.getUser());
-
-        datesService.saveUserDate(dateUpdated, id);
-
+        datesService.saveUserDate(userId, dateUpdated);
         return new ResponseEntity<>("Se actualizó la cita.", HttpStatus.OK);
     }
 
+    @PreAuthorize("permitAll")
     @DeleteMapping("delete/{id}")
     public ResponseEntity<String> deleteDate(@PathVariable("id") Long id) {
         datesService.deleteDateById(id);
         return new ResponseEntity<>("Se eliminó la cita correctamente.", HttpStatus.OK);
     }
-
-    /*@GetMapping("/user/{dentist}")
-    public ResponseEntity<Optional<Dates>> findDateByDentist(@PathVariable("dentist") String dentist) {
-        Optional<Dates> dateByDentist = datesService.findByDentist(dentist);
-        return new ResponseEntity<>(dateByDentist, HttpStatus.OK);
-    }
-    Esto va en DentistController en un futuro.
-    */
 }

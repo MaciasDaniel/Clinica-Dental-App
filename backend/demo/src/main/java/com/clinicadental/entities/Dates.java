@@ -3,10 +3,10 @@ package com.clinicadental.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,17 +20,19 @@ public class Dates {
     private Long id;
 
     @NotNull
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
+    @Column(name = "cita", columnDefinition = "DATETIME")
     private LocalDateTime date;
 
     @NotNull
+    @Column(name = "descripción")
     private String description;
 
     @NotNull
+    @Column(name = "dentista")
     private String dentist;
 
-    private Long userId;
-
     @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name = "foreign_key")
+    @JoinColumn(name = "usuario_id", nullable = false)
     private User user;
 }
