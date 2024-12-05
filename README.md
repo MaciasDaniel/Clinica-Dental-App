@@ -11,5 +11,5 @@ Este es un aviso de que el proyecto actualmente se encuentra en desarrollo activ
 
 En este momento, estoy concentrado en:
 
-- Implementación de la funcionalidad principal.
-- Optimización del código para mejorar la eficiencia.
+- Optimización del dashboard de la aplicación.
+- Mejorar la presentación de los servicios de la clínica dental.
