@@ -1,6 +1,8 @@
 import { React, useState } from 'react'
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { doLogin } from '../auth';
 import '../stylesheets/AddUser.css';
 
 const AddUser = () => {
@@ -23,8 +25,21 @@ const AddUser = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post("http://localhost:8080/auth/register", user);
-        navigate("/");
+        try {
+            await axios.post("http://localhost:8080/auth/register", user);
+            
+            const loginResponse = await axios.post("http://localhost:8080/auth/login", {
+                username: username,
+                password: password
+            });
+
+            doLogin(loginResponse, () => {
+                toast.success("¡Registro exitoso!, ¡Bienvenid@!");
+                navigate("/"); //cuando este listo dashboard, aqui deberá ir la ruta del dashboard
+            });
+        } catch (error) {
+            toast.error("Ha ocurrido un error, inténtalo de nuevo.");
+        }
     }
 
     return (

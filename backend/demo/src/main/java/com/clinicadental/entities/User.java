@@ -1,6 +1,7 @@
 package com.clinicadental.entities;
 
 import com.clinicadental.enums.Role;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -18,8 +19,8 @@ import java.util.stream.Collectors;
 @Builder
 @Getter
 @Setter
-@ToString(exclude = {"date"})
-@EqualsAndHashCode(exclude = {"date"})
+@ToString(exclude = {"dates"})
+@EqualsAndHashCode(exclude = {"dates"})
 @Entity
 @Table(name = "usuarios")
 public class User implements UserDetails {
@@ -53,7 +54,7 @@ public class User implements UserDetails {
     private Role role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Dates> date;
+    private List<Dates> dates;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

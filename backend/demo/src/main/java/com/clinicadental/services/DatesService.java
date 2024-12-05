@@ -8,9 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -37,18 +34,6 @@ public class DatesService {
         newDate.setDentist(date.getDentist());
         newDate.setUser(user);
         datesRepository.save(newDate);
-    }
-
-    public List<Dates> getAllDatesByUser(Long userId) {
-        if (userId == null) {
-            throw new IllegalArgumentException("El id del usuario no puede ser nulo");
-        }
-        
-        Optional<User> user = userRepository.findById(userId);
-        if (user.isPresent()) {
-            return datesRepository.findDatesByUserId(userId);
-        }
-        return Collections.emptyList();
     }
 
     public Optional<Dates> getDateById(Long id) {

@@ -7,10 +7,12 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@JsonIgnoreProperties({"user"})
 @Entity
 @Table(name = "citas")
 public class Dates {

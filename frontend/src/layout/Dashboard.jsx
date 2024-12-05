@@ -28,7 +28,7 @@ const Dashboard = () => {
         setUsers([]);
       }
     } catch (error) {
-      setUsers([currentPage]);
+      setUsers(null);
     }
   };
 
@@ -59,10 +59,10 @@ const Dashboard = () => {
   useEffect(() => {
     const currentUser = async () => {
       try {
-        const userResponse = await axios.get("/api/vi/user/current");
+        const userResponse = await axios.get("/api/v1/user/current");
         setUser(userResponse.data);
 
-        const citasResponse = await axios.get(`/dates/${userResponse.data.id}`);
+        const citasResponse = await axios.get(`api/v1/dates/user/${userResponse.data.id}`);
         setDates(citasResponse.data);
       } catch (err) {
         setError(err);

@@ -27,6 +27,10 @@ public class UserService {
 
     public Optional<User> getUserById(Long id) { return userRepository.findById(id); }
 
+    public Optional<User> getAllDatesByUser(Long userId) {
+        return userRepository.findById(userId);
+    }
+
     public User getByUserName(String username) { return userRepository.findByUsername(username); }
 
     public User saveUser(User user) {

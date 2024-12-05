@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.clinicadental.entities.User;
+
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
@@ -21,14 +23,18 @@ public class JwtService {
     @Value("${jwt.secret-key}")
     public String SECRET_KEY;
 
-    public String getToken(UserDetails user) {
+    public String getToken(User user) {
         return getToken(new HashMap<>(), user);
     }
 
-    public String getToken(Map<String, Object> extraClaims, UserDetails user) {
+    public String getToken(Map<String, Object> extraClaims, User user) {
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
+                .claim("userId", user.getId())
+                .claim("name", user.getName())
+                .claim("lastName", user.getLastName())
+                .claim("role", user.getRole().name())
                 .setSubject(user.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis()+1000*60*24))
