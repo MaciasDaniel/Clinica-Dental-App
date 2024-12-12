@@ -5,7 +5,7 @@
 
 ¡Bienvenido/a al repositorio de mi proyecto!
 
-Este es un aviso de que el proyecto actualmente se encuentra en desarrollo activo. Actualmente estoy trabajando arduamente para añadir nuevas características, mejorar el rendimiento y corregir errores. Durante este período, se esperan cambios frecuentes en el código y la estructura del proyecto.
+Este es un aviso de que el proyecto actualmente se encuentra en desarrollo activo. Estoy trabajando arduamente para añadir nuevas características, mejorar el rendimiento y corregir errores. Durante este período, se esperan cambios frecuentes en el código y la estructura del proyecto.
 
 ## Estado Actual
 
