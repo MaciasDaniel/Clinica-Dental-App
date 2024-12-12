@@ -12,4 +12,4 @@ Este es un aviso de que el proyecto actualmente se encuentra en desarrollo activ
 En este momento, estoy concentrado en:
 
 - Optimización del dashboard de la aplicación.
-- Mejorar la presentación de los servicios de la clínica dental.
+- Haciendo que la web sea completamente responsive para una mejor experiencia en diferentes dispositivos.
