@@ -1,13 +1,13 @@
 import ortodoncia from '../assets/ortodoncia.jpg';
 import endodoncia from '../assets/endodoncia.png';
-import limpiezaDental from '../assets/limpiezaDental.jpg';
-import blanqueamientoDental from '../assets/blanqueamientoDental.jpg';
+import limpiezaDental from '../assets/limpieza-dental.jpg';
+import blanqueamientoDental from '../assets/blanqueamiento-dental.jpg';
 import implantologiaDental from '../assets/implantologia.jpg';
-import cirugiaBucal from '../assets/cirugiaBucal.jpg';
+import cirugiaBucal from '../assets/cirugia-bucal.jpg';
 import odontopediatria from '../assets/odontopediatria.jpg';
-import protesisDentales from '../assets/protesisDentales.jpg';
+import protesisDentales from '../assets/protesis-dentales.jpg';
 import periodoncia from '../assets/periodoncia.webp';
-import esteticaDental from '../assets/esteticaDental.jpg';
+import esteticaDental from '../assets/estetica-dental.jpg';
 
 const serviceData = [
     {
