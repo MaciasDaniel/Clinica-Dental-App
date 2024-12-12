@@ -11,7 +11,26 @@
     padding: 20px;
     margin-top: 8px;
     margin-left: 340px;
+    margin-bottom: 25px;
     width: 1500px;
-    max-height: 800px;
+    height: 957px;
     text-align: center;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #17a7e2, #17a7e2);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #096f94, #096f94);
 }

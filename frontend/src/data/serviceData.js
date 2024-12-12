@@ -1,43 +1,94 @@
+import ortodoncia from '../assets/ortodoncia.jpg';
+import endodoncia from '../assets/endodoncia.png';
+import limpiezaDental from '../assets/limpiezaDental.jpg';
+import blanqueamientoDental from '../assets/blanqueamientoDental.jpg';
+import implantologiaDental from '../assets/implantologia.jpg';
+import cirugiaBucal from '../assets/cirugiaBucal.jpg';
+import odontopediatria from '../assets/odontopediatria.jpg';
+import protesisDentales from '../assets/protesisDentales.jpg';
+import periodoncia from '../assets/periodoncia.webp';
+import esteticaDental from '../assets/esteticaDental.jpg';
+
 const serviceData = [
     {
         name: 'Ortodoncia',
-        description: 'Nuestra clínica dental ofrece servicios de ortodoncia de vanguardia para corregir la alineación de los dientes y mejorar la función masticatoria y estética de tu sonrisa. Nuestros ortodoncistas altamente capacitados utilizan técnicas modernas y dispositivos para crear sonrisas rectas y saludables.'
+        description: 'Tratamiento para alinear tus dientes y mejorar tu sonrisa.',
+        image: ortodoncia,
+        link: '/dates',
+        originalPrice: '$8,000 MXN',
+        discountedPrice: '$6,400 MXN'
     },
     {
         name: 'Endodoncia',
-        description: 'La endodoncia es esencial para salvar dientes dañados por infecciones o lesiones en la pulpa dental. Nuestro equipo de endodoncistas utiliza procedimientos avanzados para aliviar el dolor y preservar la estructura dental, permitiéndote mantener tu sonrisa natural.'
+        description: 'Tratamiento de conductos para salvar dientes dañados.',
+        image: endodoncia,
+        link: '/dates',
+        originalPrice: '$3,500 MXN',
+        discountedPrice: '$2,800 MXN'
     },
     {
         name: 'Limpieza Dental',
-        description: 'Mantener una higiene bucal óptima es fundamental para la salud oral. Ofrecemos limpiezas dentales profesionales que eliminan la placa y el sarro, reduciendo el riesgo de enfermedades periodontales y manteniendo tu boca fresca y saludable.'
+        description: 'Elimina la placa y el sarro con nuestra limpieza dental profesional.',
+        image: limpiezaDental,
+        link: '/dates',
+        originalPrice: '$800 MXN',
+        discountedPrice: '$640 MXN'
     },
     {
         name: 'Blanqueamiento Dental',
-        description: 'Nuestro servicio de blanqueamiento dental seguro y efectivo te ayudará a lograr una sonrisa más brillante y atractiva. Utilizamos técnicas de blanqueamiento de última generación para eliminar manchas y decoloraciones, devolviéndote una sonrisa radiante.'
+        description: 'Recupera el blanco natural de tus dientes.',
+        image: blanqueamientoDental,
+        link: '/dates',
+        originalPrice: '$2,000 MXN',
+        discountedPrice: '$1,600 MXN'
     },
     {
         name: 'Implantología Dental',
-        description: 'Si has perdido un diente o varios, nuestros especialistas en implantología dental pueden ayudarte a recuperar tu sonrisa completa. Los implantes dentales ofrecen una solución permanente y natural para restaurar la funcionalidad y la estética de tu boca.'
+        description: 'Recupera tu sonrisa con nuestros implantes dentales.',
+        image: implantologiaDental,
+        link: '/dates',
+        originalPrice: '$10,000 MXN',
+        discountedPrice: '$8,000 MXN'
     },
     {
         name: 'Cirugía Bucal',
-        description: 'Nuestros cirujanos bucales altamente calificados realizan procedimientos quirúrgicos con precisión y cuidado. Desde extracciones de dientes hasta cirugía reconstructiva, estamos aquí para abordar tus necesidades de manera segura y efectiva.'
+        description: 'Procedimientos quirúrgicos para resolver problemas complejos.',
+        image: cirugiaBucal,
+        link: '/dates',
+        originalPrice: '$5,500 MXN',
+        discountedPrice: '$4,400 MXN'
     },
     {
         name: 'Odontopediatría',
-        description: 'Entendemos la importancia de cuidar la salud oral de los más pequeños. Nuestros odontopediatras brindan atención especializada y amigable para garantizar que los niños tengan una base dental sólida y positiva para el futuro.'
+        description: 'Tratamientos dentales para niños, enfocados en prevención.',
+        image: odontopediatria,
+        link: '/dates',
+        originalPrice: '$800 MXN',
+        discountedPrice: '$640 MXN'
     },
     {
         name: 'Prótesis Dentales',
-        description: 'Ofrecemos soluciones personalizadas de prótesis dentales para restaurar la función y la apariencia de tu sonrisa. Ya sea que necesites dentaduras completas o parciales, trabajaremos contigo para lograr resultados naturales y cómodos.'
+        description: 'Recupera tu funcionalidad y estética dental con prótesis.',
+        image: protesisDentales,
+        link: '/dates',
+        originalPrice: '$5,000 MXN',
+        discountedPrice: '$4,000 MXN'
     },
     {
         name: 'Periodoncia',
-        description: 'La salud de las encías es esencial para una sonrisa duradera. Nuestros periodoncistas se especializan en el diagnóstico y tratamiento de enfermedades periodontales, como la gingivitis y la periodontitis, para preservar la salud de tus encías y dientes.'
+        description: 'Cuida la salud de tus encías con nuestros tratamientos de periodoncia.',
+        image: periodoncia,
+        link: '/dates',
+        originalPrice: '$3,500 MXN',
+        discountedPrice: '$2,800 MXN'
     },
     {
         name: 'Estética Dental',
-        description: 'Mejoramos tu estética dental. Ofrecemos una variedad de tratamientos, desde carillas dentales hasta restauraciones de composite, para lograr una sonrisa más atractiva y confiada.'
+        description: 'Realza tu sonrisa con carillas dentales.',
+        image: esteticaDental,
+        link: '/dates',
+        originalPrice: '$4,000 MXN',
+        discountedPrice: '$3,200 MXN'
     }
 ];
 

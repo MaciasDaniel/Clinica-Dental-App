@@ -2,13 +2,6 @@
     display: grid;
 }
 
-.service-box {
-    background-color: #17a7e2;
-    border-radius: 5px;
-    color: #fff;
-    padding: 5px;
-}
-
 .service-container:nth-child(9) {
     grid-column: 2 / 3;
     grid-row: 3 / 4;
@@ -17,4 +10,48 @@
 .service-container:nth-child(10) {
     grid-column: 3 / 4;
     grid-row: 3 / 4;
+}
+
+.service-box {
+    background-color: #17a7e2;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px;
+}
+
+.service-image {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.service-prices {
+    display: flex;
+    justify-content:space-evenly;
+}
+
+.service-original-price {
+    text-decoration: line-through;
+    color: red;
+}
+
+.service-discounted-price {
+    color: green;
+}
+
+.service-link {
+    display: inline-block;
+    background-color: #fff;
+    color: #17a7e2;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    transition: .3s;
+}
+
+.service-link:hover {
+    background-color: #076080;
+    color: #fff;
 }

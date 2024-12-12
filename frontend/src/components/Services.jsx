@@ -8,7 +8,15 @@ const Services = () => {
     <div className='services-container'>
       <div className='services-box'>
         {serviceData.map((service, index) => 
-          <Service key={index} name={service.name} description={service.description} />
+          <Service
+            key={index}
+            name={service.name}
+            description={service.description}
+            image={service.image}
+            link={service.link}
+            originalPrice={service.originalPrice}
+            discountedPrice={service.discountedPrice}
+          />
         )}
       </div>
     </div>
