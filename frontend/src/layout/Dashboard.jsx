@@ -205,7 +205,7 @@ const Dashboard = () => {
       {userRole === "USER" && (
         <div className="dashboard-container-user">
           <div className="title-container">
-            {username && <h2 className="title-user">¡Bienvenid@, {username}!</h2>}
+            {username && <h2 className="title-user">¡Bienvenido/a, {username}!</h2>}
           </div>
           <div className="btn-container-date">
             <Link className="btn-add-date" to="/dates">

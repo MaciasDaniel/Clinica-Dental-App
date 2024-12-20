@@ -1,11 +1,11 @@
-# Proyecto en Desarrollo
+# Proyecto parcialmente terminado
 
 [![Estado del Proyecto](https://img.shields.io/badge/Estado-En%20Desarrollo-yellow.svg)](https://github.com/MaciasDaniel/Clinica-Dental-App)
 [![Última Actualización](https://img.shields.io/badge/Última%20Actualización-Diciembre%202024-blue.svg)](https://github.com/MaciasDaniel/Clinica-Dental-App/commits/main/)
 
 ¡Bienvenido/a al repositorio de mi proyecto!
 
-Web terminada para escritorio, aún falta hacer responsiva las web para dispositivos móviles.
+Web terminada para escritorio, aún falta por hacer responsiva la web para dispositivos móviles.
 
 ## Estado Actual
 
