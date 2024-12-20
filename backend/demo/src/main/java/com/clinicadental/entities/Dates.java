@@ -6,13 +6,12 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@JsonIgnoreProperties({"user"})
 @Entity
 @Table(name = "citas")
 public class Dates {
@@ -35,6 +34,7 @@ public class Dates {
     private String dentist;
 
     @ManyToOne(targetEntity = User.class)
+    @JsonBackReference
     @JoinColumn(name = "usuario_id", nullable = false)
     private User user;
 }

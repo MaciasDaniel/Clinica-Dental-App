@@ -35,6 +35,14 @@
   font-size: 14px;
 }
 
+.area-select {
+  border-radius: 3px;
+}
+
+.dentist-select {
+  border-radius: 3px;
+}
+
 .date-form button {
   background-color: #0898cd;
   color: #fff;

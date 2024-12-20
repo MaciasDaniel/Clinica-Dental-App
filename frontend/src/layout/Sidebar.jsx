@@ -22,7 +22,7 @@ const Sidebar = () => {
         <li className='group-list-item'><Link to='/contact' className='link'><AiOutlinePhone className='contact-icon' />Contacto</Link></li>
       </ul>
     </div>
-  )
-}
+  );
+};
 
 export default Sidebar;

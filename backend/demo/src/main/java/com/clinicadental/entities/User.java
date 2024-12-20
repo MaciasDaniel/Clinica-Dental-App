@@ -1,6 +1,9 @@
 package com.clinicadental.entities;
 
+import com.clinicadental.config.AuthorityDeserializer;
 import com.clinicadental.enums.Role;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -54,7 +57,11 @@ public class User implements UserDetails {
     private Role role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Dates> dates;
+
+    @JsonDeserialize(contentUsing = AuthorityDeserializer.class)
+    private List<GrantedAuthority> authorities;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

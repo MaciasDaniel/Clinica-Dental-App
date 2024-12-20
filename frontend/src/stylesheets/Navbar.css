@@ -8,6 +8,10 @@
 }
 
 .dashboard-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     background-color: #0898cd;
     color: #fff;
     border: none;
@@ -24,15 +28,27 @@
     background-color: #096f94;
 }
 
+.dashboard-icon {
+    padding-left: 5px;
+    margin-bottom: 2px;
+    font-size: 25px;
+}
+
 .dashboard-user .logout-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     background-color: #fff;
     text-decoration: none;
     font-size: 18px;
     padding: 9px;
     margin-top: 15px;
+    width: 90px;
     border-radius: 5px;
     color: #0898cd;
     transition: .3s;
+    
 }
 
 .dashboard-user .logout-btn:hover {
@@ -40,7 +56,13 @@
     color: #fff;
 }
 
-.login-container {
+.logout-icon {
+    padding-left: 5px;
+    margin-bottom: 2px;
+    font-size: 25px;
+}
+
+.login-container-navbar {
     display: flex;
     padding: 30px;
     text-align: center;
@@ -59,24 +81,42 @@
     text-decoration: none;
     border-radius: 5px;
     margin-left: 15px;
+    transition: .3s;
 }
 
 .button-register:hover {
     background-color: #096f94;
-    transition: .3s;
 }
 
 .button-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     background-color: aliceblue;
     text-decoration: none;
     color: #0898cd;
     border-radius: 5px;
     margin-left: 15px;
     padding: 10px;
+    transition: .3s;
 }
 
 .button-login:hover {
     background-color: #0898cd;
     color: #fff;
-    transition: .3s;
+}
+
+.login-icon {
+    padding-left: 5px;
+    margin-bottom: 2px;
+    font-size: 25px;
+    margin-left: 2px;
+}
+
+.register-icon {
+    padding-left: 5px;
+    margin-bottom: 2px;
+    font-size: 25px;
+    margin-left: 2px;
 }

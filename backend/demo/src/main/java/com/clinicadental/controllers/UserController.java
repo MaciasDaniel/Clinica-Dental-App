@@ -4,13 +4,12 @@ import com.clinicadental.entities.User;
 import com.clinicadental.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -26,15 +25,16 @@ public class UserController {
     }
 
     @PreAuthorize("permitAll")
-    @GetMapping("/users/{page}")
-    public ResponseEntity<Page<User>> listUsers(@PathVariable("page") Integer page) {
-        Page<User> list = userService.getAllUsers(PageRequest.of(page, 8));
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> listUsers() {
+        List<User> list = userService.getAllUsers();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    @PreAuthorize("permitAll")
     @GetMapping("/dates/user/{id}")
     public ResponseEntity<?> getDatesByUser(@PathVariable("id") Long id) {
-        Optional<User> user = userService.getAllDatesByUser(id);
+        Optional<User> user = userService.getUserById(id);
         if (user.isPresent()) {
             return ResponseEntity.ok(user.get().getDates());
         } else {
@@ -56,7 +56,7 @@ public class UserController {
         return new ResponseEntity<>(userSaved, HttpStatus.CREATED);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("permitAll")
     @PutMapping("/update/user/{id}")
     public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @Valid @RequestBody User user) {
         User userUpdated = userService.getUserById(id).orElseThrow(() -> new RuntimeException("El usuario con id: "+ id +" no existe."));
@@ -73,7 +73,7 @@ public class UserController {
         return new ResponseEntity<>(userSaved, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAuthority('WRITE')")
+    @PreAuthorize("permitAll")
     @DeleteMapping("/delete/user/{id}")
     public ResponseEntity<String> deleteUserById(@PathVariable("id") Long id) {
         userService.deleteUser(id);

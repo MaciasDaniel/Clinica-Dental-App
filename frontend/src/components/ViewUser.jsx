@@ -51,7 +51,7 @@ export default function ViewUser() {
           </ul>
         </div>
       </div>
-      <Link className="btn btn-primary my-3" to={"/user/dashboard"}>
+      <Link className="btn btn-outline-primary my-3" to={"/user/dashboard"}>
         Regresar
       </Link>
     </div>

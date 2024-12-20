@@ -16,6 +16,7 @@ import About from './components/About';
 import Services from './components/Services';
 import Dates from './components/Dates';
 import Contact from './components/Contact';
+import EditDate from './components/EditDate';
 
 function App() {
   return (
@@ -24,7 +25,6 @@ function App() {
         <Navbar />
         <Sidebar />
         <ToastContainer />
-        
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route exact path='/login' element={<Login />} />
@@ -38,10 +38,11 @@ function App() {
           </Route>
           <Route exact path='/edituser/:id' element={<EditUser />} />
           <Route exact path='/:id' element={<ViewUser />} />
+          <Route exact path='/editappointment/:id' element={<EditDate />} />
         </Routes>
       </Router>
     </div>
   );
-}
+};
 
 export default App;

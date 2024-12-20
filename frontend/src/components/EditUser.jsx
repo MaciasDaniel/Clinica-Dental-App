@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "../stylesheets/EditUser.css";
+import { toast } from 'react-toastify';
 
 const EditUser = () => {
   let navigate = useNavigate();
@@ -13,7 +14,7 @@ const EditUser = () => {
     lastName: "",
     username: "",
     email: "",
-    role: "",
+    role: ""
   });
 
   const { name, lastName, username, email, role } = user;
@@ -28,20 +29,30 @@ const EditUser = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:8080/api/v1/update/user/${id}`, user);
-    navigate("/");
+    try {
+      await axios.put(`http://localhost:8080/api/v1/update/user/${id}`, user);
+      toast.success("¡Usuario actualizado exitosamente!");
+      navigate("/user/dashboard");
+    } catch (error) {
+      console.error(error);
+      toast.error("Error al actualizar el usuario, inténtalo de nuevo");
+    }
   };
 
   const loadUser = async () => {
-    const result = await axios.get(`http://localhost:8080/api/v1/user/${id}`);
-    setUser(result.data);
+    try {
+      const result = await axios.get(`http://localhost:8080/api/v1/user/${id}`);
+      setUser(result.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <div className="form-edit-container">
       <div className="form-edit-box">
         <h2 className="text-title">Editar Usuario</h2>
-        <form onSubmit={(e) => onSubmit(e)}>
+        <form onSubmit={onSubmit}>
           <div className="container-field">
             <label htmlFor="name" className="form-label">
               Nombre:
@@ -52,7 +63,7 @@ const EditUser = () => {
               placeholder="Introduce tu nombre*"
               name="name"
               value={name}
-              onChange={(e) => onInputChange(e)}
+              onChange={onInputChange}
               required
             />
           </div>
@@ -66,7 +77,7 @@ const EditUser = () => {
               placeholder="Introduce tu apellido*"
               name="lastName"
               value={lastName}
-              onChange={(e) => onInputChange(e)}
+              onChange={onInputChange}
               required
             />
           </div>
@@ -80,7 +91,7 @@ const EditUser = () => {
               placeholder="Introduce un nombre de usuario*"
               name="username"
               value={username}
-              onChange={(e) => onInputChange(e)}
+              onChange={onInputChange}
               required
             />
           </div>
@@ -94,7 +105,7 @@ const EditUser = () => {
               placeholder="Introduce tu correo electrónico*"
               name="email"
               value={email}
-              onChange={(e) => onInputChange(e)}
+              onChange={onInputChange}
               required
             />
           </div>
@@ -106,19 +117,18 @@ const EditUser = () => {
               className="form-select"
               name="role"
               value={role}
-              onChange={(e) => onInputChange(e)}
+              onChange={onInputChange}
             >
               <option value="ADMIN">Administrador</option>
-              <option value="DENTIST">Dentista</option>
               <option value="USER">Usuario</option>
             </select>
           </div>
-          <button type="submit" className="btn btn-outline-primary my-3">
-            Guardar
-          </button>
-          <Link className="btn btn-outline-danger mx-3" to="/user/dashboard">
+          <Link className="btn btn-outline-danger" to="/user/dashboard">
             Cancelar
           </Link>
+          <button type="submit" className="btn btn-outline-primary my-3 mx-3">
+            Guardar
+          </button>
         </form>
       </div>
     </div>

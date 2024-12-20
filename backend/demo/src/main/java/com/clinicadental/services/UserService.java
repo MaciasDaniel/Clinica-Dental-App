@@ -3,11 +3,10 @@ package com.clinicadental.services;
 import com.clinicadental.entities.User;
 import com.clinicadental.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,15 +20,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public Page<User> getAllUsers(Pageable pageable) {
-        return userRepository.findAll(pageable);
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
     public Optional<User> getUserById(Long id) { return userRepository.findById(id); }
-
-    public Optional<User> getAllDatesByUser(Long userId) {
-        return userRepository.findById(userId);
-    }
 
     public User getByUserName(String username) { return userRepository.findByUsername(username); }
 

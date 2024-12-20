@@ -1,0 +1,49 @@
+.edit-appointment-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    border-radius: 5px;
+    box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.4);
+    max-width: 500px;
+    height: 500px;
+    margin-top: 130px;
+    margin-left: 800px;
+    text-align: center;
+}
+
+.edit-appointment-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.area-select {
+    margin-bottom: 20px;
+}
+
+.edit-text {
+    color: #0589ad;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.edit-appointment-form input[type="datetime-local"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.btns-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}

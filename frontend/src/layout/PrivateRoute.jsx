@@ -11,6 +11,6 @@ const PrivateRoute = () => {
     }else{
         return navigate("/login");
     }
-}
+};
 
 export default PrivateRoute;

@@ -1,9 +1,11 @@
 import React from "react";
 import "../stylesheets/Pagination.css";
+import { MdKeyboardArrowLeft } from "react-icons/md";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
   const next = () => {
-    if (currentPage !== nPages && currentPage <= nPages)
+    if (currentPage !== nPages - 1 && currentPage <= nPages)
       setCurrentPage(currentPage + 1);
   };
 
@@ -18,16 +20,16 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
           className={currentPage === 0 ? "disabled" : "enabled"}
           onClick={prev}
         >
-          Anterior
+          <MdKeyboardArrowLeft />
         </button>
         <span className="pages">
-          {currentPage} / {nPages}
+          {currentPage + 1} / {nPages}
         </span>
         <button
-          className={currentPage === nPages ? "disabled" : "enabled"}
+          className={currentPage === nPages - 1 ? "disabled" : "enabled"}
           onClick={next}
         >
-          Siguiente
+          <MdOutlineKeyboardArrowRight />
         </button>
       </div>
     </>

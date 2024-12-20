@@ -5,11 +5,8 @@
 
 ¡Bienvenido/a al repositorio de mi proyecto!
 
-Este es un aviso de que el proyecto actualmente se encuentra en desarrollo activo. Esto significa que estoy trabajando arduamente para añadir nuevas características, mejorar el rendimiento y corregir errores. Durante este período, se esperan cambios frecuentes en el código y la estructura del proyecto.
+Web terminada para escritorio, aún falta hacer responsiva las web para dispositivos móviles.
 
 ## Estado Actual
 
-En este momento, estoy concentrado en:
-
-- Optimización del dashboard de la aplicación.
-- Mejorar la presentación de los servicios de la clínica dental.
+- Haciendo la web responsiva.

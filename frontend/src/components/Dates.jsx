@@ -4,6 +4,7 @@ import '../stylesheets/Dates.css';
 import axios from "axios";
 import { getUserIdFromToken } from "../utils/utils";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Dates = () => {
   const [appointment, setAppointment] = useState({
@@ -17,6 +18,8 @@ const Dates = () => {
   const isLogged = isLoggedIn();
 
   const { date, description, dentist } = appointment;
+
+  let navigate = useNavigate();
 
   const onInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,6 +39,7 @@ const Dates = () => {
       });
       toast.success("Cita agendada exitosamente!");
       setAppointment({ date: "", description: "", dentist: "" });
+      navigate("/user/dashboard");
     } catch (error) {
       console.error(error);
     }
@@ -58,8 +62,9 @@ const Dates = () => {
           onChange={onInputChange}
           required
         />
-        <label>Área de consulta:</label>
+        <label>Servicio:</label>
         <select className="area-select" name="description" value={description} onChange={onInputChange}>
+          <option value="" selected disabled>Selecciona un servicio</option>
           <option value="Ortodoncia">Ortodoncia</option>
           <option value="Endodoncia">Endodoncia</option>
           <option value="Limpieza Dental">Limpieza Dental</option>
@@ -71,17 +76,15 @@ const Dates = () => {
           <option value="Periodoncia">Periodoncia</option>
           <option value="Estética Dental">Estética Dental</option>
         </select>
-        <br />
-        <br />
         <label>Dentista:</label>
         <select className="dentist-select" name="dentist" value={dentist} onChange={onInputChange}>
+          <option value="" selected disabled>Selecciona un dentista</option>
           <option value="Sergio Acosta">Sergio Acosta</option>
           <option value="Juan Pérez">Juan Pérez</option>
           <option value="Miguel Rodríguez">Miguel Rodríguez</option>
           <option value="Javier González">Javier González</option>
           <option value="Giselle Martínez">Giselle Martínez</option>
         </select>
-        <br />
         <div className="enabled-btn">
           {isLogged ? (
             <button className="enabled-btn" type="submit">

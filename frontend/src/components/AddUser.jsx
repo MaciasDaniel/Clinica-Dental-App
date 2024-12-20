@@ -1,9 +1,11 @@
-import { React, useState } from 'react'
+import { React, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { doLogin } from '../auth';
 import '../stylesheets/AddUser.css';
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const AddUser = () => {
 
@@ -17,36 +19,41 @@ const AddUser = () => {
         password: ""
     });
 
+    const [showPassword, setShowPassword] = useState(false);
+    
     const { name, lastName, username, email, password } = user;
+
+    const credentials = { username, password };
 
     const onInputChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
-    }
+    };
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
             await axios.post("http://localhost:8080/auth/register", user);
             
-            const loginResponse = await axios.post("http://localhost:8080/auth/login", {
-                username: username,
-                password: password
-            });
+            const loginResponse = await axios.post("http://localhost:8080/auth/login", credentials);
 
             doLogin(loginResponse, () => {
                 toast.success("¡Registro exitoso!, ¡Bienvenid@!");
-                navigate("/"); //cuando este listo dashboard, aqui deberá ir la ruta del dashboard
+                navigate("/user/dashboard");
             });
         } catch (error) {
             toast.error("Ha ocurrido un error, inténtalo de nuevo.");
         }
-    }
+    };
 
     return (
-        <div className='form-container'>
+        <div className='form-container-register'>
             <div className='form-box'>
                 <h2 className='text-title'>Regístrate</h2>
-                <form onSubmit={(e) => onSubmit(e)}>
+                <form onSubmit={onSubmit}>
                     <div className='container-field'>
                         <label htmlFor='name' className='form-label'>
                             Nombre:
@@ -57,7 +64,7 @@ const AddUser = () => {
                             placeholder='Ingresa tu nombre*'
                             name='name'
                             value={name}
-                            onChange={(e) => onInputChange(e)}
+                            onChange={onInputChange}
                             required
                         />
                     </div>
@@ -71,7 +78,7 @@ const AddUser = () => {
                             placeholder='Ingresa tu apellido*'
                             name='lastName'
                             value={lastName}
-                            onChange={(e) => onInputChange(e)}
+                            onChange={onInputChange}
                             required
                         />
                     </div>
@@ -85,7 +92,7 @@ const AddUser = () => {
                             placeholder='Ingresa un nombre de usuario*'
                             name='username'
                             value={username}
-                            onChange={(e) => onInputChange(e)}
+                            onChange={onInputChange}
                             required
                         />
                     </div>
@@ -99,7 +106,7 @@ const AddUser = () => {
                             placeholder='Ingresa tu correo electrónico*'
                             name='email'
                             value={email}
-                            onChange={(e) => onInputChange(e)}
+                            onChange={onInputChange}
                             required
                         />
                     </div>
@@ -107,15 +114,25 @@ const AddUser = () => {
                         <label htmlFor='password' className='form-label'>
                             Contraseña:
                         </label>
-                        <input
-                            type="password"
-                            className="form-control"
-                            placeholder='Ingresa una contraseña*'
-                            name='password'
-                            value={password}
-                            onChange={(e) => onInputChange(e)}
-                            required
-                        />
+                        <div className='input-wrapper'>
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                id='password'
+                                className='form-control'
+                                placeholder='Ingresa una contraseña*'
+                                name='password'
+                                value={password}
+                                onChange={onInputChange}
+                                required
+                            />
+                            <button
+                                type="button"
+                                className="password-toggle"
+                                onClick={togglePasswordVisibility}
+                            >
+                                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                            </button>
+                        </div>
                     </div>
                     <Link className='btn btn-outline-danger mx' to="/">
                         Cancelar
@@ -126,7 +143,7 @@ const AddUser = () => {
                 </form>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default AddUser;

@@ -34,6 +34,7 @@ public class JwtService {
                 .claim("userId", user.getId())
                 .claim("name", user.getName())
                 .claim("lastName", user.getLastName())
+                .claim("username", user.getUsername())
                 .claim("role", user.getRole().name())
                 .setSubject(user.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))

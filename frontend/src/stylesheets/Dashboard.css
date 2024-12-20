@@ -1,15 +1,67 @@
 .dashboard-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 50px;
+    margin-left: 300px;
+    margin-top: 70px;
+    margin-bottom: 30px;
+}
+
+.dashboard-container-user {
+    display: flex;
     flex-direction: column;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(15px);
     box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.6);
     border-radius: 5px;
-    margin: 50px;
-    margin-left: 300px;
-    margin-top: 70px;
+    margin-top: 80px;
+    margin-left: 555px;
+    margin-bottom: 50px;
+    width: 1100px;
+}
+
+.title-user {
+    color: #0589ad;
+    text-align: center;
+    font-weight: bold;
+}
+
+.btn-add-date {
+    background-color: #0898cd;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .3s;
+    font-size: 18px;
+    padding: 9px;
+    margin-left: 938px;
+}
+
+.btn-add-date:hover {
+    background-color: #127093;
+}
+
+.add-date-icon {
+    margin-bottom: 2px;
+    font-size: 20px;
+}
+
+.selector {
+    background-color: #0898cd;
+    color: #fff;
+    border-radius: 5px;
+    width: 200px;
+    height: 33px;
+    margin-bottom: 5px;
+    text-align: center;
 }
 
 .table-container th, td {
@@ -18,18 +70,18 @@
     text-align: center;
 }
 
-.selector {
-    background-color: #0898cd;
-    color: #fff;
-    border-radius: 5px;
-    height: 30px;
-    margin-bottom: 5px;
-    text-align: center;
-}
-
 .input-container {
+    position: relative;
     max-width: 435px;
     margin-bottom: 10px;
+}
+
+.input-container .search-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    margin-left: 2px;
 }
 
 .input-text {
